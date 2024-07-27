@@ -3,16 +3,72 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './components/home/home.component';
+import { CartComponent } from './components/cart/cart.component';
+import { ProductsComponent } from './components/products/products.component';
+import { BrandsComponent } from './components/brands/brands.component';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LiginComponent } from './components/ligin/ligin.component';
+import { RegisterComponent } from './components/register/register.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { DetailsComponent } from './components/details/details.component';
+import { NavAuthComponent } from './components/nav-auth/nav-auth.component';
+import { NavBlankComponent } from './components/nav-blank/nav-blank.component';
+import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
+import { BlankLayoutComponent } from './components/blank-layout/blank-layout.component';
+import { LoginComponent } from './components/login/login.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BuyPipe } from './buy.pipe';
+import { TermtextPipe } from './termtext.pipe';
+import { SearchPipe } from './search.pipe';
+import { ToastrModule } from 'ngx-toastr';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { AllordersComponent } from './components/allorders/allorders.component';
+import { MyHttpInterceptor } from './my-http.interceptor';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    CartComponent,
+    ProductsComponent,
+    BrandsComponent,
+    CategoriesComponent,
+    FooterComponent,
+    RegisterComponent,
+    NotfoundComponent,
+    DetailsComponent,
+    NavAuthComponent,
+    NavBlankComponent,
+    AuthLayoutComponent,
+    BlankLayoutComponent,
+    LoginComponent,
+    BuyPipe,
+    TermtextPipe,
+    SearchPipe,
+    CheckoutComponent,
+    AllordersComponent,
+    WishlistComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    CarouselModule,
+    FormsModule,
+    ToastrModule.forRoot()
+
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass:MyHttpInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
